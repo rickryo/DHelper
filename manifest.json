@@ -1,0 +1,26 @@
+{
+  "name": "DHelper",
+  "description": "https://github.com/rickryo/DHelper",
+  "version": "1.0",
+  "manifest_version": 2,
+  
+  "browser_action": {
+    "default_icon": "enable.png"
+  },
+  
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+	  {
+		  "matches": ["http://*/daily/dailyMobile.do?method=otherAdd&sDate=*"],
+		  "js": ["prepareContent.js"]
+	  },
+	  {
+		  "matches": ["http://*/daily/dailyMobile.do?method=select&selectDate=*"],
+		  "js": ["submitContent.js"]
+	  }	  
+  ],
+  "web_accessible_resources": ["prepareInject.js", "submitInject.js", "esprima.js"]
+}
